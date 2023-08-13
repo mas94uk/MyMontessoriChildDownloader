@@ -1,0 +1,77 @@
+@page {
+    size: a5;
+}
+
+html, body {
+    /* height: 100%; */
+    margin: 0;
+    font-size: 12pt;
+    direction: ltr;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+
+    /* Show the whole page upside down, to reverse the order of the entries */
+    transform: scaleY(-1);
+}
+
+.entry {
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 20% 20% 40% 20%; /* Why doesn't this do anything? */
+
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 1pt;
+    border-color: gray;
+    padding: 5pt;
+
+    page-break-inside: avoid;
+
+    /* Render each item upside down, so it's the right way up on the page */
+    transform: scaleY(-1);
+}
+
+.entry:nth-of-type(2n+1) {
+    direction: rtl;
+    background-color: yellow;
+}
+
+.title {
+    font-size: 18pt;
+    grid-column: 1;
+    grid-row: 2;
+    direction: ltr;
+    margin: 10pt;
+}
+
+.text {
+    grid-column: 1;
+    grid-row: 3;
+    direction: ltr;
+    margin: 10pt;
+}
+
+.imageContain {
+    grid-column: 2;
+    grid-row: 1 / 6;
+    margin: 10pt;
+}
+
+img {
+    max-width: 100%;
+    max-height: 150pt;
+    border-radius: 3pt;
+    border-style: solid;
+    border-color: black;
+    border-width: 1pt;
+    box-shadow: 3pt 3pt #0002;
+}
+
+.date, .clear {
+    display: none;
+}
