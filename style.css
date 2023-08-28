@@ -3,7 +3,6 @@
 }
 
 html, body {
-    /* height: 100%; */
     margin: 0;
     font-size: 12pt;
     direction: ltr;
@@ -14,16 +13,12 @@ body {
     justify-content: center;
     align-items: center;
 
-    /* Show the whole page upside down, to reverse the order of the entries */
-    transform: scaleY(-1);
+    /* Show the items in reverse, earliest to latest */
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .entry {
-    display: grid;
-    grid-gap: 0;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 20% 20% 40% 20%; /* Why doesn't this do anything? */
-
     border-top: solid;
     border-bottom: solid;
     border-width: 1pt;
@@ -32,38 +27,39 @@ body {
 
     page-break-inside: avoid;
 
-    /* Render each item upside down, so it's the right way up on the page */
-    transform: scaleY(-1);
+    height: fit-content;
+    width: 100%;
 }
 
+/* Every other item has the picture on the left, and padding between picture and text swapped accordingly */
 .entry:nth-of-type(2n+1) {
-    direction: rtl;
-    background-color: yellow;
+    .imageContain {
+        float: left;
+        margin-left: 10pt;
+        margin-right: 20pt;
+    }
 }
 
 .title {
     font-size: 18pt;
-    grid-column: 1;
-    grid-row: 2;
-    direction: ltr;
     margin: 10pt;
 }
 
 .text {
-    grid-column: 1;
-    grid-row: 3;
-    direction: ltr;
     margin: 10pt;
 }
 
 .imageContain {
-    grid-column: 2;
-    grid-row: 1 / 6;
     margin: 10pt;
+    margin-left: 20pt;
+    
+    float: right;
 }
 
 img {
-    max-width: 100%;
+    min-height: 100pt;
+    min-width: 100pt;
+    max-width: 150pt;
     max-height: 150pt;
     border-radius: 3pt;
     border-style: solid;
