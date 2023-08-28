@@ -80,7 +80,7 @@ html = f"""<!doctype html>
 <head>
 <title>My Monessori Child Observations</title>
 <meta name="description" content="My Monessori Child Observations">
-# <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 {body}
